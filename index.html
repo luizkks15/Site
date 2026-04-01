@@ -1,564 +1,299 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportZone+ | A sua Assessoria de Alta Performance</title>
-    
-    <!-- Modern Fonts -->
+    <meta name="description" content="Conectamos você às melhores assessorias esportivas de confiança.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Icons (FontAwesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
 </head>
 <body>
 
-    <!-- Header / Navbar -->
-    <nav id="navbar">
-        <a href="#home" class="logo">
-            <img src="img-20260310T185352Z-1-001/img/image-removebg-preview.png" alt="SportZone+ Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="fallback-text"><span class="text-gradient">SPORT</span>ZONE+</div>
-        </a>
-        
-        <div class="menu-toggle" id="mobile-menu">
+
+<nav id="navbar">
+    <a href="#home" class="logo">
+        <span class="text-gradient logo-text">SPORTZONE+</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-item">Início</a></li>
+        <li><a href="#assessorias" class="nav-item">Assessorias</a></li>
+        <li><a href="#nutricao" class="nav-item">Nutrição</a></li>
+        <li><a href="#sobre" class="nav-item">Sobre Nós</a></li>
+        <li id="nav-auth-item">
+            <a href="#login" class="nav-item btn btn-sm">Login</a>
+        </li>
+        <li id="nav-user-info" style="display:none;">
+            <span class="nav-user-name"></span>
+            <button class="nav-logout-btn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </li>
+        <li>
+            <button class="cart-toggle" onclick="openCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+            </button>
+        </li>
+    </ul>
+    <div class="mobile-actions">
+        <button class="cart-toggle" onclick="openCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-badge-mobile" style="display:none;">0</span>
+        </button>
+        <button class="menu-toggle" id="mobile-menu">
             <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-content fade-up">
+        <p class="hero-subtitle">A Sua Melhor Versão Começa Aqui</p>
+        <h1>Com a SportZone <span class="text-gradient">Você Voa</span></h1>
+        <p class="hero-desc">Conectamos você às melhores assessorias esportivas de confiança, selecionadas para o seu perfil e objetivos. Triathlon, ciclismo, musculação ou alto rendimento: temos o treinador certo para você.</p>
+        <a href="#assessorias" class="btn">Conhecer Planos <i class="fa-solid fa-chevron-down" style="margin-left:8px;"></i></a>
+    </div>
+</section>
+
+<section id="assessorias">
+    <div class="section-header fade-up">
+        <h2>Escolha Sua <span class="text-gradient">Assessoria</span></h2>
+        <p>Alternativas para todos os estilos de atleta.</p>
+    </div>
+    <div class="plans-grid">
+        <div class="plan-card glass-panel fade-up" data-plan-id="pro" data-plan-name="Pro Training" data-plan-price="179">
+            <div class="plan-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Pro Training</h3>
+            <p class="plan-price">R$ 179<span>/mês</span></p>
+            <p class="plan-desc">Construção de resistência e treinamento avançado.</p>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> Até 4 treinos semanais</li>
+                <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
+                <li><i class="fa-solid fa-check"></i> Ajustes mensais</li>
+                <li><i class="fa-solid fa-check"></i> Suporte básico</li>
+            </ul>
+            <button class="btn btn-subscribe" onclick="addToCart('pro','Pro Training',179)">Assinar Agora</button>
         </div>
 
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="nav-item">Início</a></li>
-            <li><a href="#assessorias" class="nav-item">Assessorias</a></li>
-            <li><a href="#nutricao" class="nav-item">Nutrição</a></li>
-            <li><a href="#sobre" class="nav-item">Sobre Nós</a></li>
-            <li><a href="#login" class="btn nav-item" style="padding: 10px 25px; font-size: 0.9rem;"><i class="fa-solid fa-user" style="margin-right: 8px;"></i> Login</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="hero-content">
-            <span style="color: var(--color-secondary); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,240,255,0.4);">A Sua Melhor Versão Começa Aqui</span>
-            <h1>Com a <span class="text-gradient">SportZone</span><br>Você Voa</h1>
-            <p>Conectamos você às melhores assessorias esportivas de confiança, selecionadas para o seu perfil e objetivos. Triathlon, ciclismo, musculação ou alto rendimento: temos o treinador certo para você.</p>
-            <a href="#assessorias" class="btn">Conhecer Planos <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></a>
+        <div class="plan-card glass-panel plan-popular fade-up" data-plan-id="elite" data-plan-name="Elite Performance" data-plan-price="249">
+            <span class="popular-badge">Mais Escolhido</span>
+            <div class="plan-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h3>Elite Performance</h3>
+            <p class="plan-price">R$ 249<span>/mês</span></p>
+            <p class="plan-desc">Alta performance para atletas avançados focados em resultados extremos.</p>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> Treinos ilimitados</li>
+                <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
+                <li><i class="fa-solid fa-check"></i> Ajustes semanais</li>
+                <li><i class="fa-solid fa-check"></i> Suporte prioritário</li>
+            </ul>
+            <button class="btn btn-subscribe" onclick="addToCart('elite','Elite Performance',249)">Assinar Agora</button>
         </div>
-    </section>
 
-    <!-- Assessorias / Planos -->
-    <section id="assessorias">
-        <div class="section-header">
-            <h2 class="font-lato">Escolha Sua <span class="text-gradient">Assessoria</span></h2>
-            <p>Alternativas para todos os estilos de atleta. Do iniciante ao profissional!</p>
+        <div class="plan-card glass-panel fade-up" data-plan-id="fit" data-plan-name="Fit Performance" data-plan-price="349">
+            <div class="plan-icon"><i class="fa-solid fa-crown"></i></div>
+            <h3>Fit Performance</h3>
+            <p class="plan-price">R$ 349<span>/mês</span></p>
+            <p class="plan-desc">Treino funcional e endurance. Consultoria individual com acompanhamento VIP.</p>
+            <ul class="plan-features">
+                <li><i class="fa-solid fa-check"></i> Treinos premium</li>
+                <li><i class="fa-solid fa-check"></i> Consultoria individual</li>
+                <li><i class="fa-solid fa-check"></i> Ajustes em tempo real</li>
+                <li><i class="fa-solid fa-check"></i> Suporte VIP 24/7</li>
+            </ul>
+            <button class="btn btn-subscribe" onclick="addToCart('fit','Fit Performance',349)">Assinar Agora</button>
         </div>
-        
-        <div class="plans-grid">
-            <!-- Plano 1 -->
-            <div class="glass-panel plan-card">
-                <div class="plan-icon">
-                    <i class="fa-solid fa-person-running"></i>
-                </div>
-                <h3>Pro Training</h3>
-                <div class="plan-price">R$ 179<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Construção de resistência e treinamento avançado.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Até 4 treinos semanais</li>
-                    <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes mensais</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte básico</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Pro Training Adicionado ao Carrinho!')">Assinar Agora</button>
-            </div>
+    </div>
+</section>
 
-            <!-- Plano 2 -->
-            <div class="glass-panel plan-card plan-popular">
-                <div class="plan-icon" style="background: rgba(0, 240, 255, 0.15); color: var(--color-secondary);">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <h3 style="color: var(--color-secondary);">Elite Performance</h3>
-                <div class="plan-price" style="color: #fff;">R$ 249<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Alta performance para atletas avançados focados em resultados extremos.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Treinos ilimitados</li>
-                    <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes semanais</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte prioritário</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Elite Performance Adicionado ao Carrinho!')" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));">Assinar Agora</button>
-            </div>
-
-            <!-- Plano 3 -->
-            <div class="glass-panel plan-card">
-                <div class="plan-icon">
-                    <i class="fa-solid fa-dumbbell"></i>
-                </div>
-                <h3>Fit Performance</h3>
-                <div class="plan-price">R$ 349<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Treino funcional e endurance. Consultoria individual com acompanhamento VIP.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Treinos premium</li>
-                    <li><i class="fa-solid fa-check"></i> Consultoria individual</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes em tempo real</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte VIP 24/7</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Fit Performance Adicionado ao Carrinho!')">Assinar Agora</button>
-            </div>
+<section id="nutricao" class="section-nutricao">
+    <div class="imc-wrapper">
+        <div class="imc-info fade-up">
+            <h2>Orientação <span class="text-gradient">Alimentar</span></h2>
+            <p>Cuidar da alimentação é tão importante quanto treinar. Calcule seu IMC e receba orientações iniciais.</p>
+            <p class="imc-warning"><i class="fa-solid fa-triangle-exclamation"></i> As orientações não substituem acompanhamento profissional.</p>
         </div>
-    </section>
-
-    <!-- Nutrição e IMC -->
-    <section id="nutricao">
-        <div class="imc-wrapper">
-            <div class="imc-info">
-                <h2 class="font-lato">Orientação <span class="text-gradient">Alimentar</span></h2>
-                <p style="font-size: 1.15rem; color: #fff; margin-bottom: 15px;">Cuidar da alimentação é tão importante quanto treinar.</p>
-                <p>Pensando nisso, preparamos uma ferramenta para te ajudar a entender suas necessidades estruturais iniciais. Calcule seu IMC abaixo e receba orientações de dieta feitas especialmente para o seu perfil e objetivos diários de treino.</p>
-                
-                <div class="imc-features">
+        <div class="imc-calculator glass-panel fade-up">
+            <h3><i class="fa-solid fa-calculator" style="color:var(--color-secondary);"></i> Calculadora de IMC</h3>
+            <form id="imcForm">
+                <div class="form-group">
+                    <label>Gênero</label>
+                    <div class="radio-group">
+                        <button type="button" class="radio-btn active" onclick="selectGender(this,'m')">Masculino</button>
+                        <button type="button" class="radio-btn" onclick="selectGender(this,'f')">Feminino</button>
+                    </div>
                 </div>
-                <p style="margin-top: 20px; font-size: 0.85rem; color: var(--color-accent);"><i class="fa-solid fa-triangle-exclamation"></i> As orientações não substituem acompanhamento profissional de um nutricionista.</p>
-            </div>
-            
-            <div class="glass-panel imc-calculator">
-                <h3 style="margin-bottom: 30px; text-align: center; font-size: 1.8rem; font-family: 'Lato', sans-serif;">Calculadora de IMC</h3>
-                <form id="imcForm">
+                <div class="form-row">
                     <div class="form-group">
-                        <label>Gênero</label>
-                        <div class="radio-group">
-                            <div class="radio-btn active" onclick="selectRadio(this, 'sexo')"><i class="fa-solid fa-mars" style="color: #6cf;"></i> Masculino</div>
-                            <div class="radio-btn" onclick="selectRadio(this, 'sexo')"><i class="fa-solid fa-venus" style="color: #f6c;"></i> Feminino</div>
-                        </div>
+                        <label>Peso (kg)</label>
+                        <input type="text" id="peso" class="form-control" placeholder="75">
                     </div>
-                    
-                    <div class="form-group" style="display: flex; gap: 20px;">
-                        <div style="flex: 1;">
-                            <label for="peso">Peso (kg)</label>
-                            <input type="number" id="peso" class="form-control" placeholder="70.5" step="0.1" required>
-                        </div>
-                        <div style="flex: 1;">
-                            <label for="altura">Altura (m)</label>
-                            <input type="number" id="altura" class="form-control" placeholder="1.75" step="0.01" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Altura (m)</label>
+                        <input type="text" id="altura" class="form-control" placeholder="1.75">
                     </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px; font-size: 1.1rem; padding: 16px;"><i class="fa-solid fa-calculator" style="margin-right: 10px;"></i> Calcular Resultado</button>
-                    
-                    <a href="#" style="display: block; text-align: center; margin-top: 20px; color: var(--color-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600;"><i class="fa-solid fa-clipboard-list"></i> Preencher formulário completo</a>
-                </form>
-
-                <div id="imcResult" class="imc-result">
-                    <h4 style="text-transform: uppercase; letter-spacing: 2px; color: #ccc;">O seu IMC atual é:</h4>
-                    <div id="valor-imc">0.00</div>
-                    <div id="mensagem-imc"></div>
                 </div>
+                <button type="submit" class="btn btn-full">Calcular Resultado</button>
+            </form>
+            <div class="imc-result" id="imcResult">
+                <p class="imc-label">O seu IMC atual é:</p>
+                <p class="imc-value" id="valor-imc">0.00</p>
+                <div class="imc-message" id="mensagem-imc"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sobre Nós -->
-    <section id="sobre">
-        <div class="section-header">
-            <h2 class="font-lato">O Time <span class="text-gradient">SportZone+</span></h2>
-            <p>Profissionais apaixonados por tecnologia e esporte, unidos para impulsionar a sua performance.</p>
+
+<section id="sobre" class="section-sobre">
+    <div class="section-header fade-up">
+        <h2>O Time <span class="text-gradient">SportZone+</span></h2>
+        <p>Profissionais apaixonados por tecnologia e esporte.</p>
+    </div>
+    <div class="team-grid">
+        <div class="team-card glass-panel fade-up">
+            <div class="team-avatar"><div class="team-avatar-inner">A</div></div>
+            <h3>André Cleudson</h3>
+            <p class="team-role">Designer Gráfico & Dev Web</p>
+            <div class="social-team">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-card glass-panel fade-up">
+            <div class="team-avatar"><div class="team-avatar-inner">W</div></div>
+            <h3>Wendell Ramon</h3>
+            <p class="team-role">Desenvolvedor Web</p>
+            <div class="social-team">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-card glass-panel fade-up">
+            <div class="team-avatar"><div class="team-avatar-inner">J</div></div>
+            <h3>João Luiz</h3>
+            <p class="team-role">Desenvolvedor Web</p>
+            <div class="social-team">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-card glass-panel fade-up">
+            <div class="team-avatar"><div class="team-avatar-inner">M</div></div>
+            <h3>Mª Clara Matos</h3>
+            <p class="team-role">Designer Gráfico & Social</p>
+            <div class="social-team">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="login" class="section-login">
+    <div class="login-glow"></div>
+    <div class="auth-container glass-panel fade-up" id="auth-container">
+    
+        <div id="logged-in-view" style="display:none;">
+            <div class="user-avatar-big" id="user-avatar-big">?</div>
+            <h2 id="welcome-name">Olá! 👋</h2>
+            <p class="auth-sub">Você está conectado à SportZone+.</p>
         </div>
         
-        <div class="team-grid">
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/André.jpeg" alt="André Cleudson" onerror="this.src='https://ui-avatars.com/api/?name=Andre+Cleudson&background=8a2be2&color=fff&size=150'"></div>
-                <h3>André Cleudson</h3>
-                <p>Designer Gráfico & Dev Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Ramon.jpeg" alt="Wendell Ramon" onerror="this.src='https://ui-avatars.com/api/?name=Wendell+Ramon&background=00f0ff&color=000&size=150'"></div>
-                <h3>Wendell Ramon</h3>
-                <p>Desenvolvedor Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Luiz.jpeg" alt="João Luiz" onerror="this.src='https://ui-avatars.com/api/?name=Joao+Luiz&background=ff007f&color=fff&size=150'"></div>
-                <h3>João Luiz</h3>
-                <p>Desenvolvedor Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Matos.jpeg" alt="Mª Clara Matos" onerror="this.src='https://ui-avatars.com/api/?name=Maria+Clara&background=ffcc00&color=000&size=150'"></div>
-                <h3>Mª Clara Matos</h3>
-                <p>Designer Gráfico & Social</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Login / Registro -->
-    <section id="login">
-        <div class="glass-panel auth-container">
-            <h2 class="font-lato">Crie sua Conta</h2>
-            <p style="margin-bottom: 30px;">Junte-se a nossa comunidade e acelere sua evolução atlética.</p>
-            
-            <form id="registerForm">
-                <div class="form-group" style="display: flex; gap: 15px;">
-                    <input type="text" id="primeiroNome" class="form-control" placeholder="Primeiro Nome" required>
-                    <input type="text" id="segundoNome" class="form-control" placeholder="Sobrenome" required>
+        <div id="auth-form-view">
+            <h2 id="auth-title">Crie sua Conta</h2>
+            <p class="auth-sub" id="auth-subtitle">Junte-se à nossa comunidade.</p>
+            <form id="authForm">
+                <div class="form-row" id="name-fields">
+                    <div class="form-group">
+                        <input type="text" id="firstName" class="form-control" placeholder="Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" class="form-control" placeholder="Sobrenome" required>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" class="form-control" placeholder="Seu melhor e-mail" required>
+                    <input type="email" id="email" class="form-control" placeholder="Seu e-mail" required>
                 </div>
-                <div class="form-group" style="position: relative;">
-                    <input type="password" id="senha" class="form-control" placeholder="Crie uma Senha Forte" required>
-                    <i class="fa-solid fa-eye" id="togglePasswordBtn" style="position: absolute; right: 20px; top: 20px; color: #888; cursor: pointer; font-size: 1.2rem; transition: var(--transition);"></i>
+                <div class="form-group password-group">
+                    <input type="password" id="senha" class="form-control" placeholder="Senha (mín. 6 caracteres)" required minlength="6">
+                    <button type="button" class="toggle-password" id="togglePasswordBtn"><i class="fa-solid fa-eye"></i></button>
                 </div>
-                
-                <button type="submit" id="btn-submit-form" class="btn" style="width: 100%; margin-top: 15px; font-size: 1.1rem; padding: 18px;">COMEÇAR AGORA</button>
+                <button type="submit" class="btn btn-full" id="auth-submit-btn">
+                    <i class="fa-solid fa-user-plus"></i> COMEÇAR AGORA
+                </button>
             </form>
-
-            <div class="divider">OU ACESSE RAPIDAMENTE COM</div>
-            
-            <div class="social-login">
-                <a href="#" class="social-btn" title="Entrar com Google"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"></a>
-                <a href="#" class="social-btn" title="Entrar com Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
-            </div>
+            <button class="auth-toggle-link" id="auth-toggle" onclick="toggleAuthMode()">Já tem conta? Faça login</button>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col" style="flex: 1.5;">
-                <a href="#home" class="logo" style="margin-bottom: 25px; display: inline-flex;">
-                    <img src="img/image-removebg-preview.png" alt="SportZone+ Logo" style="height: 60px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="fallback-text"><span class="text-gradient">SPORT</span>ZONE+</div>
-                </a>
-                <p style="font-size: 0.95rem; max-width: 300px; line-height: 1.8;">Elevando sua performance ao máximo conectando você com as melhores assessorias esportivas e planos nutricionais.</p>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-layer-group"></i> Nossos Serviços</h4>
-                <ul>
-                    <li><a href="#assessorias">Assessorias Esportivas</a></li>
-                    <li><a href="#nutricao">Orientação Alimentar (Dieta)</a></li>
-                    <li><a href="#login">Área do Atleta (Login)</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-star"></i> Nossos Valores</h4>
-                <ul>
-                    <li>Priorizamos a saúde do atleta</li>
-                    <li>Atendimento premium individual</li>
-                    <li>Foco total na evolução constante</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-hashtag"></i> Siga-nos</h4>
-                <div style="display: flex; gap: 20px; font-size: 1.8rem; margin-top: 15px;">
-                    <a href="https://www.instagram.com/sport_zoneplusbr/" style="color: #fff; transition: var(--transition);" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" style="color: #fff; transition: var(--transition);"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+        <h3>Carrinho</h3>
+        <button onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="cart-empty">Seu carrinho está vazio.</p>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+        <div class="cart-total">
+            <span>Total mensal</span>
+            <span class="cart-total-value" id="cart-total">R$ 0/mês</span>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 <strong>SportZone+</strong>. Todos os direitos reservados. Projeto criado sem fins lucrativos.</p>
-            <p style="margin-top: 8px; color: #777;">Desenvolvido com excelência por André Cleuson, Maria Clara Matos, João Luiz e Wendell Ramon.</p>
+        <button class="btn btn-full" onclick="checkout()">Finalizar Compra</button>
+    </div>
+</div>
+
+
+<div class="toast-container" id="toast-container"></div>
+
+
+<button id="btn-topo"><i class="fa-solid fa-chevron-up"></i></button>
+
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <p class="text-gradient logo-text footer-logo">SPORTZONE+</p>
+            <p class="footer-desc">Elevando sua performance ao máximo conectando você com as melhores assessorias esportivas.</p>
         </div>
-    </footer>
-
-    <!-- Botão Voltar ao Topo -->
-    <button id="btn-topo" aria-label="Voltar para o topo"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SportZone+ | A sua Assessoria de Alta Performance</title>
-    
-    <!-- Modern Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Icons (FontAwesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-</head>
-<body>
-
-    <!-- Header / Navbar -->
-    <nav id="navbar">
-        <a href="#home" class="logo">
-            <img src="img-20260310T185352Z-1-001/img/image-removebg-preview.png" alt="SportZone+ Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="fallback-text"><span class="text-gradient">SPORT</span>ZONE+</div>
-        </a>
-        
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
+        <div class="footer-col">
+            <h4>Serviços</h4>
+            <ul>
+                <li><a href="#assessorias">Assessorias Esportivas</a></li>
+                <li><a href="#nutricao">Orientação Alimentar</a></li>
+                <li><a href="#login">Área do Atleta</a></li>
+            </ul>
         </div>
-
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="nav-item">Início</a></li>
-            <li><a href="#assessorias" class="nav-item">Assessorias</a></li>
-            <li><a href="#nutricao" class="nav-item">Nutrição</a></li>
-            <li><a href="#sobre" class="nav-item">Sobre Nós</a></li>
-            <li><a href="#login" class="btn nav-item" style="padding: 10px 25px; font-size: 0.9rem;"><i class="fa-solid fa-user" style="margin-right: 8px;"></i> Login</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home">
-        <div class="hero-content">
-            <span style="color: var(--color-secondary); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,240,255,0.4);">A Sua Melhor Versão Começa Aqui</span>
-            <h1>Com a <span class="text-gradient">SportZone</span><br>Você Voa</h1>
-            <p>Conectamos você às melhores assessorias esportivas de confiança, selecionadas para o seu perfil e objetivos. Triathlon, ciclismo, musculação ou alto rendimento: temos o treinador certo para você.</p>
-            <a href="#assessorias" class="btn">Conhecer Planos <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></a>
+        <div class="footer-col">
+            <h4>Valores</h4>
+            <ul>
+                <li>Priorizamos a saúde do atleta</li>
+                <li>Atendimento premium individual</li>
+                <li>Foco total na evolução</li>
+            </ul>
         </div>
-    </section>
-
-    <!-- Assessorias / Planos -->
-    <section id="assessorias">
-        <div class="section-header">
-            <h2 class="font-lato">Escolha Sua <span class="text-gradient">Assessoria</span></h2>
-            <p>Alternativas para todos os estilos de atleta. Do iniciante ao profissional!</p>
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <p>contato@sportzone.com</p>
         </div>
-        
-        <div class="plans-grid">
-            <!-- Plano 1 -->
-            <div class="glass-panel plan-card">
-                <div class="plan-icon">
-                    <i class="fa-solid fa-person-running"></i>
-                </div>
-                <h3>Pro Training</h3>
-                <div class="plan-price">R$ 179<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Construção de resistência e treinamento avançado.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Até 4 treinos semanais</li>
-                    <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes mensais</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte básico</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Pro Training Adicionado ao Carrinho!')">Assinar Agora</button>
-            </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 SportZone+. Todos os direitos reservados.</p>
+        <p class="footer-credits">Desenvolvido por André Cleuson, Maria Clara Matos, João Luiz e Wendell Ramon.</p>
+    </div>
+</footer>
 
-            <!-- Plano 2 -->
-            <div class="glass-panel plan-card plan-popular">
-                <div class="plan-icon" style="background: rgba(0, 240, 255, 0.15); color: var(--color-secondary);">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <h3 style="color: var(--color-secondary);">Elite Performance</h3>
-                <div class="plan-price" style="color: #fff;">R$ 249<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Alta performance para atletas avançados focados em resultados extremos.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Treinos ilimitados</li>
-                    <li><i class="fa-solid fa-check"></i> Planilha personalizada</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes semanais</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte prioritário</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Elite Performance Adicionado ao Carrinho!')" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));">Assinar Agora</button>
-            </div>
-
-            <!-- Plano 3 -->
-            <div class="glass-panel plan-card">
-                <div class="plan-icon">
-                    <i class="fa-solid fa-dumbbell"></i>
-                </div>
-                <h3>Fit Performance</h3>
-                <div class="plan-price">R$ 349<span>/mês</span></div>
-                <p style="margin-bottom: 25px; font-size: 0.95rem; color: #ccc;">Treino funcional e endurance. Consultoria individual com acompanhamento VIP.</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check"></i> Treinos premium</li>
-                    <li><i class="fa-solid fa-check"></i> Consultoria individual</li>
-                    <li><i class="fa-solid fa-check"></i> Ajustes em tempo real</li>
-                    <li><i class="fa-solid fa-check"></i> Suporte VIP 24/7</li>
-                </ul>
-                <button class="btn" onclick="alert('Plano Fit Performance Adicionado ao Carrinho!')">Assinar Agora</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nutrição e IMC -->
-    <section id="nutricao">
-        <div class="imc-wrapper">
-            <div class="imc-info">
-                <h2 class="font-lato">Orientação <span class="text-gradient">Alimentar</span></h2>
-                <p style="font-size: 1.15rem; color: #fff; margin-bottom: 15px;">Cuidar da alimentação é tão importante quanto treinar.</p>
-                <p>Pensando nisso, preparamos uma ferramenta para te ajudar a entender suas necessidades estruturais iniciais. Calcule seu IMC abaixo e receba orientações de dieta feitas especialmente para o seu perfil e objetivos diários de treino.</p>
-                
-                <div class="imc-features">
-                </div>
-                <p style="margin-top: 20px; font-size: 0.85rem; color: var(--color-accent);"><i class="fa-solid fa-triangle-exclamation"></i> As orientações não substituem acompanhamento profissional de um nutricionista.</p>
-            </div>
-            
-            <div class="glass-panel imc-calculator">
-                <h3 style="margin-bottom: 30px; text-align: center; font-size: 1.8rem; font-family: 'Lato', sans-serif;">Calculadora de IMC</h3>
-                <form id="imcForm">
-                    <div class="form-group">
-                        <label>Gênero</label>
-                        <div class="radio-group">
-                            <div class="radio-btn active" onclick="selectRadio(this, 'sexo')"><i class="fa-solid fa-mars" style="color: #6cf;"></i> Masculino</div>
-                            <div class="radio-btn" onclick="selectRadio(this, 'sexo')"><i class="fa-solid fa-venus" style="color: #f6c;"></i> Feminino</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group" style="display: flex; gap: 20px;">
-                        <div style="flex: 1;">
-                            <label for="peso">Peso (kg)</label>
-                            <input type="number" id="peso" class="form-control" placeholder="70.5" step="0.1" required>
-                        </div>
-                        <div style="flex: 1;">
-                            <label for="altura">Altura (m)</label>
-                            <input type="number" id="altura" class="form-control" placeholder="1.75" step="0.01" required>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px; font-size: 1.1rem; padding: 16px;"><i class="fa-solid fa-calculator" style="margin-right: 10px;"></i> Calcular Resultado</button>
-                    
-                    <a href="#" style="display: block; text-align: center; margin-top: 20px; color: var(--color-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 600;"><i class="fa-solid fa-clipboard-list"></i> Preencher formulário completo</a>
-                </form>
-
-                <div id="imcResult" class="imc-result">
-                    <h4 style="text-transform: uppercase; letter-spacing: 2px; color: #ccc;">O seu IMC atual é:</h4>
-                    <div id="valor-imc">0.00</div>
-                    <div id="mensagem-imc"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Nós -->
-    <section id="sobre">
-        <div class="section-header">
-            <h2 class="font-lato">O Time <span class="text-gradient">SportZone+</span></h2>
-            <p>Profissionais apaixonados por tecnologia e esporte, unidos para impulsionar a sua performance.</p>
-        </div>
-        
-        <div class="team-grid">
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/André.jpeg" alt="André Cleudson" onerror="this.src='https://ui-avatars.com/api/?name=Andre+Cleudson&background=8a2be2&color=fff&size=150'"></div>
-                <h3>André Cleudson</h3>
-                <p>Designer Gráfico & Dev Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Ramon.jpeg" alt="Wendell Ramon" onerror="this.src='https://ui-avatars.com/api/?name=Wendell+Ramon&background=00f0ff&color=000&size=150'"></div>
-                <h3>Wendell Ramon</h3>
-                <p>Desenvolvedor Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Luiz.jpeg" alt="João Luiz" onerror="this.src='https://ui-avatars.com/api/?name=Joao+Luiz&background=ff007f&color=fff&size=150'"></div>
-                <h3>João Luiz</h3>
-                <p>Desenvolvedor Web</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-            <div class="glass-panel team-card">
-                <div class="team-img"><img src="img-20260310T185352Z-1-001/img/Matos.jpeg" alt="Mª Clara Matos" onerror="this.src='https://ui-avatars.com/api/?name=Maria+Clara&background=ffcc00&color=000&size=150'"></div>
-                <h3>Mª Clara Matos</h3>
-                <p>Designer Gráfico & Social</p>
-                <div class="social-team">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Login / Registro -->
-    <section id="login">
-        <div class="glass-panel auth-container">
-            <h2 class="font-lato">Crie sua Conta</h2>
-            <p style="margin-bottom: 30px;">Junte-se a nossa comunidade e acelere sua evolução atlética.</p>
-            
-            <form id="registerForm">
-                <div class="form-group" style="display: flex; gap: 15px;">
-                    <input type="text" id="primeiroNome" class="form-control" placeholder="Primeiro Nome" required>
-                    <input type="text" id="segundoNome" class="form-control" placeholder="Sobrenome" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" class="form-control" placeholder="Seu melhor e-mail" required>
-                </div>
-                <div class="form-group" style="position: relative;">
-                    <input type="password" id="senha" class="form-control" placeholder="Crie uma Senha Forte" required>
-                    <i class="fa-solid fa-eye" id="togglePasswordBtn" style="position: absolute; right: 20px; top: 20px; color: #888; cursor: pointer; font-size: 1.2rem; transition: var(--transition);"></i>
-                </div>
-                
-                <button type="submit" id="btn-submit-form" class="btn" style="width: 100%; margin-top: 15px; font-size: 1.1rem; padding: 18px;">COMEÇAR AGORA</button>
-            </form>
-
-            <div class="divider">OU ACESSE RAPIDAMENTE COM</div>
-            
-            <div class="social-login">
-                <a href="#" class="social-btn" title="Entrar com Google"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"></a>
-                <a href="#" class="social-btn" title="Entrar com Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col" style="flex: 1.5;">
-                <a href="#home" class="logo" style="margin-bottom: 25px; display: inline-flex;">
-                    <img src="img/image-removebg-preview.png" alt="SportZone+ Logo" style="height: 60px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="fallback-text"><span class="text-gradient">SPORT</span>ZONE+</div>
-                </a>
-                <p style="font-size: 0.95rem; max-width: 300px; line-height: 1.8;">Elevando sua performance ao máximo conectando você com as melhores assessorias esportivas e planos nutricionais.</p>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-layer-group"></i> Nossos Serviços</h4>
-                <ul>
-                    <li><a href="#assessorias">Assessorias Esportivas</a></li>
-                    <li><a href="#nutricao">Orientação Alimentar (Dieta)</a></li>
-                    <li><a href="#login">Área do Atleta (Login)</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-star"></i> Nossos Valores</h4>
-                <ul>
-                    <li>Priorizamos a saúde do atleta</li>
-                    <li>Atendimento premium individual</li>
-                    <li>Foco total na evolução constante</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-hashtag"></i> Siga-nos</h4>
-                <div style="display: flex; gap: 20px; font-size: 1.8rem; margin-top: 15px;">
-                    <a href="https://www.instagram.com/sport_zoneplusbr/" style="color: #fff; transition: var(--transition);" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" style="color: #fff; transition: var(--transition);"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 <strong>SportZone+</strong>. Todos os direitos reservados. Projeto criado sem fins lucrativos.</p>
-            <p style="margin-top: 8px; color: #777;">Desenvolvido com excelência por André Cleuson, Maria Clara Matos, João Luiz e Wendell Ramon.</p>
-        </div>
-    </footer>
-
-    <!-- Botão Voltar ao Topo -->
-    <button id="btn-topo" aria-label="Voltar para o topo"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
